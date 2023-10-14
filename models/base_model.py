@@ -3,8 +3,12 @@
 """This module hosts one class model BaseModel.
 """
 
+import uuid
+from datetime import datetime
+
+
 class BaseModel:
-     """This class model defines all common attributes,
+    """This class model defines all common attributes,
         methods for other classes.
 
     Attributes:
@@ -21,8 +25,6 @@ class BaseModel:
             - set using __dict__
             - Set as the first step to serialization/deserialization process.
     """
-import uuid
-from datetime import datetime
 
     def __init__(self):
         """Initializes a BaseModel instance with the given dict representation.
@@ -30,9 +32,9 @@ from datetime import datetime
         Args:
         **kwargs: A dictionary with attributes and their values.
         """
-    self.id = str(uuid.uuid4())
-    self.created_at = datetime.now()
-    self.updated_at = datetime.now()
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def save(self):
         """Updates the public instance attr updated_at with current datetime.
@@ -47,11 +49,9 @@ from datetime import datetime
         self.obj_dict["__class__"] = self.__class__.__name__
         self.obj_dict["created_at"] = self.created_at.isoformat()
         self.obj_dict["updated_at"] = self.updated_at.isoformat()
-
+        return (self.obj_dict)
 
     def __str__(self):
         """Print the class name, instance id and class dict representation.
         """
-        return ([self.__class__.__name__] (self.id) self.__dict__)
-
-    
+        return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
