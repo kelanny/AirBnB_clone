@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-"""This module hosts one class model BaseModel.
-"""
+"""This module defines BaseModel class."""
 
 import uuid
 from datetime import datetime
@@ -9,44 +8,31 @@ import models
 
 
 class BaseModel:
-    """This class model defines all common attributes,
-        methods for other classes.
-
-    Attributes:
-        id (str): A string-assign with uuid when instance is created.
-        created_at (datetime): Assigned with the current datetime.
-            when an instance is created.
-        updated_at (datetime): Assign with the current datetime
-            when instance is created.
-            Will be updated anytime the object is changed.
-
-    Public instance methods:
-        save(self): Updates the 'updated_at' attr with the current datetime.
-        to_dict(self): Returns dict containing all instance attributes.
-            - set using __dict__
-            - Set as the first step to serialization/deserialization process.
+    """Represent the BaseModel of the whole program.
     """
 
     def __init__(self, *args, **kwargs):
-        """Initializes a BaseModel instance with the given dict representation.
+        """Initializes a BaseModel instance.
 
         Args:
-        **kwargs: A dictionary with attributes and their values.
+            *args (any): Unused
+            **kwargs: A dictionary with attributes and their values.
         """
 
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        dt_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
 
                 if key in ['created_at', 'updated_at']:
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    value = datetime.strptime(value, dt_format)
 
                 setattr(self, key, value)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def save(self):
@@ -66,6 +52,7 @@ class BaseModel:
         return (self.obj_dict)
 
     def __str__(self):
-        """Print the class name, instance id and class dict representation.
+        """Print the string representation of BaseModel instance.
         """
-        return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
+        class_name = self.__class__.__name__
+        return ("[{}] ({}) {}".format(class_name, self.id, self.__dict__))
