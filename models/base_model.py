@@ -26,7 +26,7 @@ class BaseModel:
             - Set as the first step to serialization/deserialization process.
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Initializes a BaseModel instance with the given dict representation.
 
         Args:
