@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """This class model defines all common attributes,
         methods for other classes.
@@ -32,7 +33,7 @@ class BaseModel:
         Args:
         **kwargs: A dictionary with attributes and their values.
         """
-    
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
