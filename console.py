@@ -1,10 +1,17 @@
 #!/usr/bin/python3
+"""
+This module provides a command-line interface
+Used for interacting with the HBNB project.
+Users can execute various commands to manage objects within the project.
+"""
 
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """
-    HBNBCommand is a command-line interpreter for managing objects in the HBNB project.
+    HBNBCommand is a command-line interpreter
+    Used for managing objects in the HBNB project.
 
     Attributes:
     - prompt: The command prompt shown to the user.
@@ -23,6 +30,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Exit the program"""
         return (True)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
