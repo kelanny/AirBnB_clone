@@ -22,6 +22,10 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = " (hbnb) "
+    __classes = {
+            "BaseModel",
+            "User"
+            }
 
     def do_quit(self, arg):
         """Command to exit the program"""
@@ -30,6 +34,22 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Exit the program"""
         return (True)
+
+    def do_create(self, arg):
+        """It creates a new class instance.
+        Usage: create <class>
+        """
+        
+        arg = arg.split()
+        print(arg)
+        if not arg:
+            print("** class name missing **")
+        elif arg[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:            
+            new_instance = eval(arg[0]())
+            new_instance.save()
+            print(new_instance.id)
 
 
 if __name__ == "__main__":
