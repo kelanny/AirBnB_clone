@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+header {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    width: 142px;
+    height: 60px;
+    background: url("../images/logo.png") no-repeat center;
+    padding-left: 20px;
+=======
  header {
 	background-color: #FFFFFF;
         height: 70px;
@@ -18,4 +34,5 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+>>>>>>> 12288b9e890262079c914b83c589a96c2d0ca2bb
 }

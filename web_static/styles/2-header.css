@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+header{
+    Background-color:#FF0000;
+    height: 70px;
+    width:100%;
+=======
  header {
 	background-color: #FF0000;
         height: 70px;
@@ -7,4 +13,5 @@
         display: flex;
         justify-content: center;
         align-items: center;
+>>>>>>> 12288b9e890262079c914b83c589a96c2d0ca2bb
 }
